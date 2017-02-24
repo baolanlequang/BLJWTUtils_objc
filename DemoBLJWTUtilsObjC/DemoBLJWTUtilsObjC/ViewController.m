@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "BLJWTUtils.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    NSDictionary *dataPayload = @{@"userid":@"1234", @"username":@"test", @"age":@"101"};
+    NSError *error;
+    NSString *encodedJWT = [[BLJWTUtils instance] encodeJWTAlgHS256WithDictionaryData:dataPayload secretKey:@"secret_abc" error:&error];
+    if (error == nil) {
+        NSLog(@"encodedJWT: %@", encodedJWT);
+    }
 }
 
 

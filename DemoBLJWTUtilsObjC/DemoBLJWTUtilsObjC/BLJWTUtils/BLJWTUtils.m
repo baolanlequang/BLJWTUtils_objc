@@ -92,29 +92,6 @@
     return resultDic;
 }
 
-- (NSString *)encodeJWTWithDictionaryData:(NSDictionary *)dicData secretKey:(NSString *)secretKey error:(NSError *__autoreleasing *)error {
-    NSString *resultStr = nil;
-    
-    NSError *errorJSON;
-    NSData *dataPayload = [NSJSONSerialization dataWithJSONObject:dicData options:NSJSONWritingPrettyPrinted error:&errorJSON];
-    if (errorJSON) {
-        *error = errorJSON;
-    }
-    else {
-        NSString *jsonPayload = [[NSString alloc] initWithData:dataPayload encoding:NSUTF8StringEncoding];
-        NSDictionary *dicHeader = [NSDictionary dictionaryWithObjectsAndKeys:@"HS256", @"alg", @"JWT", @"typ", nil];
-        NSData *dataHeader = [NSJSONSerialization dataWithJSONObject:dicHeader options:NSJSONWritingPrettyPrinted error:nil];
-        NSString *jsonHeader = [[NSString alloc] initWithData:dataHeader encoding:NSUTF8StringEncoding];
-        NSString *base64Header = [self encodeBase64:jsonHeader];
-        NSString *base64Payload = [self encodeBase64:jsonPayload];
-        NSString *plainText = [NSString stringWithFormat:@"%@.%@", [self encodeBase64URL:base64Header], [self encodeBase64URL:base64Payload]];
-        NSString *signatureStr = [self hashStringSHA256:plainText withKey:secretKey];
-        resultStr = [NSString stringWithFormat:@"%@.%@", plainText, signatureStr];
-    }
-    
-    return resultStr;
-}
-
 - (NSString *)encodeBase64:(NSString *)inputString {
     NSData *encodeData = [inputString dataUsingEncoding:NSUTF8StringEncoding];
     NSString *base64String = [encodeData base64EncodedStringWithOptions:0];
@@ -213,7 +190,15 @@
     }
     
     NSString *plainText = [NSString stringWithFormat:@"%@.%@", header, payload];
-    NSString *hashedString = [self hashStringSHA256:plainText withKey:secretKey];
+    
+    NSString *hashedString = @"";
+    
+    NSString *algorithm = [[jsonHeader objectForKey:@"alg"] lowercaseString];
+    
+    if ([algorithm isEqualToString:@"hs256"]) {
+        hashedString = [self hashStringSHA256:plainText withKey:secretKey];
+    }
+    
     
     if (![hashedString isEqualToString:signature]) {
         return JWT_INVALID_SIGNATURE;

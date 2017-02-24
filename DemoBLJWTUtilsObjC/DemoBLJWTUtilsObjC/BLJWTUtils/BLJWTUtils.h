@@ -15,7 +15,6 @@
 
 - (NSDictionary *)decondeJWTToken:(NSString *)token withSecretKey:(NSString *)secretKey error:(NSError **)error;
 - (NSString *)encodeJWTAlgHS256WithDictionaryData:(NSDictionary *)dicData secretKey:(NSString *)secretKey error:(NSError **)error;
-- (NSString *)encodeJWTWithDictionaryData:(NSDictionary *)dicData secretKey:(NSString *)secretKey error:(NSError **)error;
 - (ERRORJWT)verifyJWTToken:(NSString *)token withSecretKey:(NSString *)secretKey;
 
 @end
