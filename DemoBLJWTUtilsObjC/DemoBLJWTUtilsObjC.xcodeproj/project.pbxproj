@@ -13,6 +13,7 @@
 		307561481E5FEA6E00222015 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307561461E5FEA6E00222015 /* Main.storyboard */; };
 		3075614A1E5FEA6E00222015 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 307561491E5FEA6E00222015 /* Assets.xcassets */; };
 		3075614D1E5FEA6E00222015 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3075614B1E5FEA6E00222015 /* LaunchScreen.storyboard */; };
+		307561591E5FEBE000222015 /* BLJWTUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 307561581E5FEBE000222015 /* BLJWTUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,9 @@
 		307561491E5FEA6E00222015 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3075614C1E5FEA6E00222015 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3075614E1E5FEA6E00222015 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		307561551E5FEB3C00222015 /* ERRORJWT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ERRORJWT.h; sourceTree = "<group>"; };
+		307561571E5FEBE000222015 /* BLJWTUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLJWTUtils.h; sourceTree = "<group>"; };
+		307561581E5FEBE000222015 /* BLJWTUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLJWTUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		3075613C1E5FEA6E00222015 /* DemoBLJWTUtilsObjC */ = {
 			isa = PBXGroup;
 			children = (
+				307561541E5FEB0200222015 /* BLJWTUtils */,
 				307561401E5FEA6E00222015 /* AppDelegate.h */,
 				307561411E5FEA6E00222015 /* AppDelegate.m */,
 				307561431E5FEA6E00222015 /* ViewController.h */,
@@ -77,6 +82,16 @@
 				3075613E1E5FEA6E00222015 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		307561541E5FEB0200222015 /* BLJWTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				307561551E5FEB3C00222015 /* ERRORJWT.h */,
+				307561571E5FEBE000222015 /* BLJWTUtils.h */,
+				307561581E5FEBE000222015 /* BLJWTUtils.m */,
+			);
+			path = BLJWTUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +169,7 @@
 				307561451E5FEA6E00222015 /* ViewController.m in Sources */,
 				307561421E5FEA6E00222015 /* AppDelegate.m in Sources */,
 				3075613F1E5FEA6E00222015 /* main.m in Sources */,
+				307561591E5FEBE000222015 /* BLJWTUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
